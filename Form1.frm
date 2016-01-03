@@ -456,7 +456,7 @@ Attribute VB_Exposed = False
 '        eBayCalculatorN22.exe could be No Store, 2.2% PayPal transaction fee
 '
 ' Listing Format        Discounts            PayPal Transaction Fee  Final Value Fees
-'  C -- auCtion          P -- Power Seller   *29 -- 2.9% + $0.30     4 -- 4% FV Fee
+'  A -- Auction         *P -- Power Seller   *29 -- 2.9% + $0.30     4 -- 4% FV Fee
 ' *F -- Fixed Price      N -- No Store        25 -- 2.5% + $0.30     6 -- 6% FV Fee
 '                       *S -- Store           22 -- 2.2% + $0.30     7 -- 7% FV Fee
 ' USPS Discount                               19 -- 1.9% + $0.30     8 -- 8% FV Fee
@@ -499,7 +499,6 @@ Private Sub Form_Load()
 Me.Height = 3900    'sets the form height
 Call PayPalFees     'load PayPal Fees Combobox
 Call Shipping       'load Shipping Combobox
-Call StoreType      'load Store Combobox
 Call FinalValueFees 'load Final Value Fees percentage Combobox
 Call SetDefaults    'sets the default textboxes and radio settings
 End Sub
@@ -510,7 +509,9 @@ Unload Form1        'graceful exit
 End Sub
 
 Private Sub SetDefaults()
-optFixed.Value = True           'set Fixed price radio button
+optFixed.Value = True          'set Fixed price radio button
+chkStore.Value = 1             'store is checked
+chkPS.Value = 1                'PowerSeller is checked
 txtCost.Text = "0.00"          'sets the cost value
 txtSell.Text = "0.00"          'sets the sell value
 txtShipCharged.Text = "0.00"   'sets the shipping charged value
@@ -658,11 +659,6 @@ Else
     cboShipping.AddItem "13 oz, $4.54"
 End If
 cboShipping.ListIndex = 0     'picks the first item in the box
-
-End Sub
-
-Private Sub StoreType()
-chkStore.Value = 1     'store is checked
 
 End Sub
 
