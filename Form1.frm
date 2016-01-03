@@ -434,7 +434,30 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+'---------------------------------------------------------------------------------------
+' Program   : eBayCalculator.exe
+' Date      : 1/2/2016
+'
+'
 ' Updated 5/31/2015 for new USPS postal rates
+'
+' TODO:  Use program name to set options, for example:
+'        eBayCalculatorBP.exe could be Basic Store, Power Seller
+'        eBayCalculatorN22.exe could be No Store, 2.2% PayPal transaction fee
+'
+' Listing Format       Discounts            PayPal Transaction Fee  USPS Discount
+'  C -- auCtion        *P -- Power Seller   *29 -- 2.9% + $0.30     *U -- USPS Shipping Discount
+' *F -- Fixed Price     N -- No Store        25 -- 2.5% + $0.30      X -- No Shipping Discount
+'                      *B -- Basic Store     22 -- 2.2% + $0.30
+'                       R -- pRemium Store   19 -- 1.9% + $0.30
+'                       A -- Anchor Store    50 -- 5.0% + $0.05
+' * - denotes default
+'
+'
+' FIX: 20% Power Seller Discount doesn't work
+'      $ - dollar signs disappear on all money calculations
+'
+'---------------------------------------------------------------------------------------
 
 Option Explicit
 
