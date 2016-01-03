@@ -6,7 +6,7 @@ Begin VB.Form Form1
    ClientHeight    =   3480
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   13170
+   ClientWidth     =   13050
    BeginProperty Font 
       Name            =   "Calibri"
       Size            =   12
@@ -20,7 +20,7 @@ Begin VB.Form Form1
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    ScaleHeight     =   3480
-   ScaleWidth      =   13170
+   ScaleWidth      =   13050
    StartUpPosition =   3  'Windows Default
    Begin VB.Frame frmItmCst 
       BackColor       =   &H0080FF80&
@@ -94,10 +94,10 @@ Begin VB.Form Form1
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   255
-         Left            =   1920
+         Left            =   1440
          TabIndex        =   27
          Top             =   960
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label lblProfit 
          Alignment       =   2  'Center
@@ -172,7 +172,7 @@ Begin VB.Form Form1
    Begin VB.CommandButton btnTotal 
       Caption         =   "Get Totals"
       Height          =   495
-      Left            =   8040
+      Left            =   7920
       TabIndex        =   21
       Top             =   2880
       Width           =   2535
@@ -261,12 +261,21 @@ Begin VB.Form Form1
    Begin VB.Frame frmDiscounts 
       BackColor       =   &H00C0C0FF&
       Caption         =   "Discounts"
-      Height          =   1695
-      Left            =   10680
+      Height          =   1935
+      Left            =   10560
       TabIndex        =   9
       ToolTipText     =   "Power Seller and Store type Discounts"
-      Top             =   1680
+      Top             =   1440
       Width           =   2415
+      Begin VB.ComboBox cboFVF 
+         Height          =   405
+         Left            =   120
+         Style           =   2  'Dropdown List
+         TabIndex        =   32
+         ToolTipText     =   "Select Final Value Fee"
+         Top             =   1320
+         Width           =   1215
+      End
       Begin VB.ComboBox cboStore 
          Height          =   405
          Left            =   120
@@ -274,7 +283,7 @@ Begin VB.Form Form1
          TabIndex        =   11
          ToolTipText     =   "Select Store Type"
          Top             =   840
-         Width           =   2055
+         Width           =   1935
       End
       Begin VB.CheckBox chkPS 
          BackColor       =   &H00C0C0FF&
@@ -303,7 +312,7 @@ Begin VB.Form Form1
          Height          =   255
          Left            =   1440
          TabIndex        =   20
-         Top             =   1320
+         Top             =   1440
          Width           =   855
       End
    End
@@ -311,7 +320,7 @@ Begin VB.Form Form1
       BackColor       =   &H00C0C0FF&
       Caption         =   "Actual Shipping Costs"
       Height          =   2655
-      Left            =   8040
+      Left            =   7920
       TabIndex        =   7
       Top             =   120
       Width           =   2535
@@ -368,8 +377,8 @@ Begin VB.Form Form1
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1455
-      Left            =   10680
+      Height          =   1215
+      Left            =   10560
       TabIndex        =   5
       Top             =   120
       Width           =   2415
@@ -381,8 +390,8 @@ Begin VB.Form Form1
          Style           =   2  'Dropdown List
          TabIndex        =   6
          ToolTipText     =   "Select PayPal Transaction Fees"
-         Top             =   480
-         Width           =   2055
+         Top             =   360
+         Width           =   1815
       End
       Begin VB.Label lblPPFees 
          Alignment       =   1  'Right Justify
@@ -401,7 +410,7 @@ Begin VB.Form Form1
          Height          =   255
          Left            =   1440
          TabIndex        =   19
-         Top             =   1080
+         Top             =   840
          Width           =   855
       End
    End
@@ -445,17 +454,20 @@ Attribute VB_Exposed = False
 '        eBayCalculatorBP.exe could be Basic Store, Power Seller
 '        eBayCalculatorN22.exe could be No Store, 2.2% PayPal transaction fee
 '
-' Listing Format       Discounts            PayPal Transaction Fee  USPS Discount
-'  C -- auCtion        *P -- Power Seller   *29 -- 2.9% + $0.30     *U -- USPS Shipping Discount
-' *F -- Fixed Price     N -- No Store        25 -- 2.5% + $0.30      X -- No Shipping Discount
-'                      *B -- Basic Store     22 -- 2.2% + $0.30
-'                       R -- pRemium Store   19 -- 1.9% + $0.30
-'                       A -- Anchor Store    50 -- 5.0% + $0.05
+' Listing Format        Discounts            PayPal Transaction Fee  Final Value Fees
+'  C -- auCtion          P -- Power Seller   *29 -- 2.9% + $0.30     4 -- 4% FV Fee
+' *F -- Fixed Price      N -- No Store        25 -- 2.5% + $0.30     6 -- 6% FV Fee
+'                       *B -- Basic Store     22 -- 2.2% + $0.30     7 -- 7% FV Fee
+' USPS Discount          R -- pRemium Store   19 -- 1.9% + $0.30     8 -- 8% FV Fee
+' *U -- USPS Discount    A -- Anchor Store    50 -- 5.0% + $0.05    *9 -- 9% FV Fee
+'  X -- No Discount
+'
 ' * - denotes default
 '
 '
 ' FIX: 20% Power Seller Discount doesn't work
 '      $ - dollar signs disappear on all money calculations
+'      Store Final Value Fees assume 9% discount... 4%, 6%, 7%, 8% and 9% categories exist
 '
 '---------------------------------------------------------------------------------------
 
@@ -475,10 +487,11 @@ Call Shipping
 End Sub
 
 Private Sub Form_Load()
-Me.Height = 3870    'sets the form height
+Me.Height = 3900    'sets the form height
 Call PayPalFees     'load PayPal Fees Combobox
 Call Shipping       'load Shipping Combobox
-Call StoreType      'load Store combobox
+Call StoreType      'load Store Combobox
+Call FinalValueFees 'load Final Value Fees percentage Combobox
 Call SetDefaults    'sets the default textboxes and radio settings
 End Sub
 
@@ -507,8 +520,17 @@ cboPPFees.AddItem "2.9% + $0.30"
 cboPPFees.AddItem "2.5% + $0.30"
 cboPPFees.AddItem "2.2% + $0.30"
 cboPPFees.AddItem "1.9% + $0.30"
-cboPPFees.AddItem "5.0% + $0.30"
+cboPPFees.AddItem "5.0% + $0.05"
 cboPPFees.ListIndex = 0     'picks the first item in the box
+End Sub
+
+Private Sub FinalValueFees()  'load Final Value Fees Combobox
+cboFVF.AddItem "4% FVF"
+cboFVF.AddItem "6% FVF"
+cboFVF.AddItem "7% FVF"
+cboFVF.AddItem "8% FVF"
+cboFVF.AddItem "9% FVF"
+cboFVF.ListIndex = 4   'picks the last item in the box
 End Sub
 
 Private Sub EbayPayPalTransFees()
@@ -528,9 +550,9 @@ Dim intConst1 As String
 
 intPercent1 = cboStore.Text  'gets the value of the Store
 If intPercent1 = "No Store" Then
-intConst1 = "0.1"
+intConst1 = "0.1"       'No Store fee
 Else
-intConst1 = "0.09"
+intConst1 = "0.09"      'Basic Store discount fee
 End If
 
 lblEbayFees.Caption = Round(intConst1 * intNewTotal, 2)
