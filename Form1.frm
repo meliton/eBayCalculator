@@ -466,8 +466,9 @@ Attribute VB_Exposed = False
 ' * - denotes default
 '
 '
-' FIX: 20% Power Seller Discount doesn't work
-'      $ - dollar signs disappear on all money calculations
+' FIX: $ - dollar signs disappear on all money calculations, bug
+'      Copy/Paste Text into Number Fields, bug
+'      Dollar decimals short/long, bug
 '
 '---------------------------------------------------------------------------------------
 
@@ -547,6 +548,7 @@ Dim intPercent As String
 Dim intConst As String
 Dim intNewTotal As String
 Dim intFVF As String
+Dim intPowerSeller As String
 
 intNewTotal = Val(txtSell.Text) + Val(txtShipCharged.Text)
 
@@ -565,7 +567,13 @@ Else
 intConst1 = "0.0" & intFVF    'Store discount fee
 End If
 
-lblEbayFees.Caption = Round(intConst1 * intNewTotal, 2)
+If chkPS.Value = 1 Then      'PowerSeller is checked
+intPowerSeller = "0.8"       '20% PowerSeller discount
+Else
+intPowerSeller = "1"         'no PowerSeller discount
+End If
+
+lblEbayFees.Caption = Round(intPowerSeller * intConst1 * intNewTotal, 2)
 lblPPeBayFees = Val(lblEbayFees.Caption) + Val(lblPPFees.Caption)
 lblAfterFees = intNewTotal - lblPPeBayFees.Caption
 Call CheckShipping      'checks which shipping fee to use
