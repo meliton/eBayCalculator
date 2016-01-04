@@ -10,8 +10,9 @@ I've updated it to include
 - variable PayPal transaction fees
 - actual shipping vs discounted shipping
 - Power Seller Discount
-- No Store / Basic Store / Premium Store / Anchor Store distinction
-- quick system calculator button
+- No Store vs. Basic Store / Premium Store / Anchor Store discount distinction
+- quick access to the system calculator
+- Final Value Fees percentage
 
 
 
