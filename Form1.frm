@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form Form1 
    BackColor       =   &H00404040&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "eBay Calculator App 1.3 (2/10/2016)"
+   Caption         =   "eBay Calculator App 1.3 (1/22/2017 Rates)"
    ClientHeight    =   3480
    ClientLeft      =   45
    ClientTop       =   375
@@ -452,6 +452,7 @@ Attribute VB_Exposed = False
 ' Updated 5/31/2015 for new USPS postal rates
 ' Updated 1/17/2016 for new USPS postal rates
 ' Updated 2/10/2016 for new USPS postal rates
+' Updates 4/24/2017 for new USPS postal rates
 '
 ' TODO:  Use program name to set options, for example:
 '        eBayCalculatorSP.exe could be Basic Store, Power Seller
@@ -631,19 +632,21 @@ Private Sub Shipping()
 txtShipping.Text = "0.00"           'resets the shipping box
 If chkUSPSDiscount.Value = vbChecked Then   'its the cheaper postage
     cboShipping.Clear
-    cboShipping.AddItem "1 oz, $2.54"
-    cboShipping.AddItem "2 oz, $2.54"
-    cboShipping.AddItem "3 oz, $2.54"
-    cboShipping.AddItem "4 oz, $2.60"
-    cboShipping.AddItem "5 oz, $2.60"
-    cboShipping.AddItem "6 oz, $2.60"
-    cboShipping.AddItem "7 oz, $2.60"
-    cboShipping.AddItem "8 oz, $2.60"
-    cboShipping.AddItem "9 oz, $3.30"
-    cboShipping.AddItem "10 oz, $3.35"
-    cboShipping.AddItem "11 oz, $3.40"
-    cboShipping.AddItem "12 oz, $3.45"
-    cboShipping.AddItem "13 oz, $3.50"
+    cboShipping.AddItem "1 oz, $2.61"
+    cboShipping.AddItem "2 oz, $2.61"
+    cboShipping.AddItem "3 oz, $2.61"
+    cboShipping.AddItem "4 oz, $2.61"
+    cboShipping.AddItem "5 oz, $2.77"
+    cboShipping.AddItem "6 oz, $2.77"
+    cboShipping.AddItem "7 oz, $2.77"
+    cboShipping.AddItem "8 oz, $2.77"
+    cboShipping.AddItem "9 oz, $3.32"
+    cboShipping.AddItem "10 oz, $3.46"
+    cboShipping.AddItem "11 oz, $3.60"
+    cboShipping.AddItem "12 oz, $3.74"
+    cboShipping.AddItem "13 oz, $3.88"
+    cboShipping.AddItem "14 oz, $4.02"
+    cboShipping.AddItem "15 oz, $4.16"
 Else
     cboShipping.Clear       'its the expensive shipping
     cboShipping.AddItem "1 oz, $2.67"
