@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form Form1 
    BackColor       =   &H00404040&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "eBay Calculator App 1.3 (1/22/2017 Rates)"
+   Caption         =   "eBay Calculator App 1.4 (5/01/2017 Rates)"
    ClientHeight    =   3480
    ClientLeft      =   45
    ClientTop       =   375
@@ -284,11 +284,11 @@ Begin VB.Form Form1
          TabIndex        =   31
          ToolTipText     =   "Select Final Value Fee"
          Top             =   1320
-         Width           =   1215
+         Width           =   1455
       End
       Begin VB.CheckBox chkPS 
          BackColor       =   &H00C0C0FF&
-         Caption         =   "20% Power Seller"
+         Caption         =   "10% Power Seller"
          Height          =   375
          Left            =   120
          TabIndex        =   10
@@ -347,12 +347,12 @@ Begin VB.Form Form1
       End
       Begin VB.ComboBox cboShipping 
          Height          =   405
-         Left            =   360
+         Left            =   120
          Style           =   2  'Dropdown List
          TabIndex        =   3
          ToolTipText     =   "Select USPS Shipping Cost"
          Top             =   960
-         Width           =   1815
+         Width           =   2175
       End
       Begin VB.Label lblOR 
          Alignment       =   2  'Center
@@ -453,6 +453,7 @@ Attribute VB_Exposed = False
 ' Updated 1/17/2016 for new USPS postal rates
 ' Updated 2/10/2016 for new USPS postal rates
 ' Updates 4/24/2017 for new USPS postal rates
+' Updates 5/01/2017 for new eBay Fees, also added Flat Rate USPS prices
 '
 ' TODO:  Use program name to set options, for example:
 '        eBayCalculatorSP.exe could be Basic Store, Power Seller
@@ -460,10 +461,10 @@ Attribute VB_Exposed = False
 '
 ' Listing Format        Discounts            PayPal Transaction Fee  Final Value Fees
 '  A -- Auction         *P -- Power Seller   *29 -- 2.9% + $0.30     4 -- 4% FV Fee
-' *F -- Fixed Price      N -- No Store        25 -- 2.5% + $0.30     6 -- 6% FV Fee
-'                       *S -- Store           22 -- 2.2% + $0.30     7 -- 7% FV Fee
-' USPS Discount                               19 -- 1.9% + $0.30     8 -- 8% FV Fee
-' *U -- USPS Discount                         50 -- 5.0% + $0.05    *9 -- 9% FV Fee
+' *F -- Fixed Price      N -- No Store        25 -- 2.5% + $0.30     6 -- 6.15% FV Fee
+'                       *S -- Store           22 -- 2.2% + $0.30     7 -- 7.15% FV Fee
+' USPS Discount                               19 -- 1.9% + $0.30     8 -- 8.15% FV Fee
+' *U -- USPS Discount                         50 -- 5.0% + $0.05    *9 -- 9.15% FV Fee
 '  X -- No Discount                                                 10 - 10% FV Fee (No Store ONLY)
 '
 ' * - denotes default
@@ -538,11 +539,11 @@ cboPPFees.ListIndex = 0     'picks the first item in the box
 End Sub
 
 Private Sub FinalValueFees()  'load Final Value Fees Combobox
-cboFVF.AddItem "4% FVF"
-cboFVF.AddItem "6% FVF"
-cboFVF.AddItem "7% FVF"
-cboFVF.AddItem "8% FVF"
-cboFVF.AddItem "9% FVF"
+cboFVF.AddItem "4.00% FVF"
+cboFVF.AddItem "6.15% FVF"
+cboFVF.AddItem "7.15% FVF"
+cboFVF.AddItem "8.15% FVF"
+cboFVF.AddItem "9.15% FVF"
 cboFVF.ListIndex = 4   'picks the last item in the box
 End Sub
 
@@ -556,7 +557,7 @@ Dim intPowerSeller As String
 
 intNewTotal = Val(txtSell.Text) + Val(txtShipCharged.Text)
 
-intFVF = Left$(cboFVF.Text, 1)
+intFVF = Left$(cboFVF.Text, 4)
 intPercent = Left$(cboPPFees.Text, 3)
 intConst = Right$(cboPPFees.Text, 3)
 lblPPFees.Caption = Round(((intPercent / 100) * intNewTotal) + intConst, 2)
@@ -568,11 +569,11 @@ intPercent1 = chkStore.Value  'gets the value of the Store
 If intPercent1 = 0 Then       'Has Store?, not checked (No Store)
 intConst1 = "0.1"             'No Store fee
 Else
-intConst1 = "0.0" & intFVF    'Store discount fee
+intConst1 = 0.01 * Val(intFVF)    'Store discount fee
 End If
 
 If chkPS.Value = 1 Then      'PowerSeller is checked
-intPowerSeller = "0.8"       '20% PowerSeller discount
+intPowerSeller = "0.9"       '10% PowerSeller discount (May 1, 2017)
 Else
 intPowerSeller = "1"         'no PowerSeller discount
 End If
@@ -593,7 +594,12 @@ On Error GoTo theEnd
 If txtShipping.Text <> "0.00" Then
 lblShip.Caption = txtShipping.Text
 Else
-lblShip.Caption = Right$(cboShipping.Text, 4)
+Dim intStrLen As Integer        ' length of string in combobox
+Dim intDollarSign As Integer    ' location of dollar sign in combobox
+
+intStrLen = Len(cboShipping.Text)
+intDollarSign = InStr(1, cboShipping.Text, "$")
+lblShip.Caption = Mid(cboShipping.Text, intDollarSign + 1, intStrLen)
 End If
 
 theEnd:     'basic error handler
@@ -647,6 +653,9 @@ If chkUSPSDiscount.Value = vbChecked Then   'its the cheaper postage
     cboShipping.AddItem "13 oz, $3.88"
     cboShipping.AddItem "14 oz, $4.02"
     cboShipping.AddItem "15 oz, $4.16"
+    cboShipping.AddItem "Envelope, $5.95"
+    cboShipping.AddItem "Med. Box, $12.40"
+    cboShipping.AddItem "Large Box, $17.05"
 Else
     cboShipping.Clear       'its the expensive shipping
     cboShipping.AddItem "1 oz, $2.67"
@@ -662,6 +671,10 @@ Else
     cboShipping.AddItem "11 oz, $3.93"
     cboShipping.AddItem "12 oz, $4.11"
     cboShipping.AddItem "13 oz, $4.29"
+    cboShipping.AddItem "Envelope, $6.65"
+    cboShipping.AddItem "Med. Box, $13.60"
+    cboShipping.AddItem "Large Box, $18.85"
+    
 End If
 cboShipping.ListIndex = 0     'picks the first item in the box
 
