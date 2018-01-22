@@ -8,7 +8,7 @@ This eBay Calculator is completely portable... no registry writing... no system 
 
 
 I've updated it to include
-- latest USPS shipping costs (as of January 22, 2017)
+- latest USPS shipping costs (as of January 21, 2018)
 - updated eBay Top Rated Seller discount and Final Value Fees (as of May 1, 2017)
 - variable PayPal transaction fees
 - actual shipping vs discounted shipping
