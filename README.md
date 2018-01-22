@@ -1,6 +1,6 @@
 # eBay Calculator
 
-![Alt text](sample.jpg?raw=true "eBay Calculator screenshot")
+![Alt text](sample2018.jpg?raw=true "eBay Calculator screenshot")
 
 I tried a bunch of calculators but they had too many bells and whistles or not enough.
 
