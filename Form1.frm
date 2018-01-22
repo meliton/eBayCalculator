@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form Form1 
    BackColor       =   &H00404040&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "eBay Calculator App 1.4 (5/01/2017 Rates)"
+   Caption         =   "eBay Calculator App 1.5 (1/21/2018 Rates)"
    ClientHeight    =   3480
    ClientLeft      =   45
    ClientTop       =   375
@@ -446,7 +446,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '---------------------------------------------------------------------------------------
 ' Program   : eBayCalculator.exe
-' Date      : 1/2/2016
+' Date      : 1/21/2018
 '
 '
 ' Updated 5/31/2015 for new USPS postal rates
@@ -454,6 +454,7 @@ Attribute VB_Exposed = False
 ' Updated 2/10/2016 for new USPS postal rates
 ' Updates 4/24/2017 for new USPS postal rates
 ' Updates 5/01/2017 for new eBay Fees, also added Flat Rate USPS prices
+' Updates 1/21/2018 for new USPS postal rates
 '
 ' TODO:  Use program name to set options, for example:
 '        eBayCalculatorSP.exe could be Basic Store, Power Seller
@@ -638,42 +639,45 @@ Private Sub Shipping()
 txtShipping.Text = "0.00"           'resets the shipping box
 If chkUSPSDiscount.Value = vbChecked Then   'its the cheaper postage
     cboShipping.Clear
-    cboShipping.AddItem "1 oz, $2.61"
-    cboShipping.AddItem "2 oz, $2.61"
-    cboShipping.AddItem "3 oz, $2.61"
-    cboShipping.AddItem "4 oz, $2.61"
-    cboShipping.AddItem "5 oz, $2.77"
-    cboShipping.AddItem "6 oz, $2.77"
-    cboShipping.AddItem "7 oz, $2.77"
-    cboShipping.AddItem "8 oz, $2.77"
-    cboShipping.AddItem "9 oz, $3.32"
-    cboShipping.AddItem "10 oz, $3.46"
-    cboShipping.AddItem "11 oz, $3.60"
-    cboShipping.AddItem "12 oz, $3.74"
-    cboShipping.AddItem "13 oz, $3.88"
-    cboShipping.AddItem "14 oz, $4.02"
-    cboShipping.AddItem "15 oz, $4.16"
-    cboShipping.AddItem "Envelope, $5.95"
-    cboShipping.AddItem "Med. Box, $12.40"
-    cboShipping.AddItem "Large Box, $17.05"
+    cboShipping.AddItem "1 oz, $2.66"
+    cboShipping.AddItem "2 oz, $2.66"
+    cboShipping.AddItem "3 oz, $2.66"
+    cboShipping.AddItem "4 oz, $2.66"
+    cboShipping.AddItem "5 oz, $2.79"
+    cboShipping.AddItem "6 oz, $2.92"
+    cboShipping.AddItem "7 oz, $3.05"
+    cboShipping.AddItem "8 oz, $3.18"
+    cboShipping.AddItem "9 oz, $3.34"
+    cboShipping.AddItem "10 oz, $3.50"
+    cboShipping.AddItem "11 oz, $3.66"
+    cboShipping.AddItem "12 oz, $3.82"
+    cboShipping.AddItem "13 oz, $4.10"
+    cboShipping.AddItem "14 oz, $4.38"
+    cboShipping.AddItem "15 oz, $4.66"
+    cboShipping.AddItem "16 oz, $4.94"
+    cboShipping.AddItem "Envelope, $6.85"
+    cboShipping.AddItem "Small Box, $7.05"
+    cboShipping.AddItem "Med. Box, $12.85"
+    cboShipping.AddItem "Large Box, $17.65"
 Else
     cboShipping.Clear       'its the expensive shipping
-    cboShipping.AddItem "1 oz, $2.67"
-    cboShipping.AddItem "2 oz, $2.67"
-    cboShipping.AddItem "3 oz, $2.67"
-    cboShipping.AddItem "4 oz, $2.67"
-    cboShipping.AddItem "5 oz, $2.85"
-    cboShipping.AddItem "6 oz, $3.03"
-    cboShipping.AddItem "7 oz, $3.21"
-    cboShipping.AddItem "8 oz, $3.39"
-    cboShipping.AddItem "9 oz, $3.57"
-    cboShipping.AddItem "10 oz, $3.75"
-    cboShipping.AddItem "11 oz, $3.93"
-    cboShipping.AddItem "12 oz, $4.11"
-    cboShipping.AddItem "13 oz, $4.29"
-    cboShipping.AddItem "Envelope, $6.65"
-    cboShipping.AddItem "Med. Box, $13.60"
-    cboShipping.AddItem "Large Box, $18.85"
+    cboShipping.AddItem "1 oz, $3.54"
+    cboShipping.AddItem "2 oz, $3.54"
+    cboShipping.AddItem "3 oz, $3.54"
+    cboShipping.AddItem "4 oz, $3.54"
+    cboShipping.AddItem "5 oz, $3.72"
+    cboShipping.AddItem "6 oz, $3.90"
+    cboShipping.AddItem "7 oz, $4.08"
+    cboShipping.AddItem "8 oz, $4.26"
+    cboShipping.AddItem "9 oz, $4.44"
+    cboShipping.AddItem "10 oz, $4.62"
+    cboShipping.AddItem "11 oz, $4.80"
+    cboShipping.AddItem "12 oz, $4.98"
+    cboShipping.AddItem "13 oz, $5.16"
+    cboShipping.AddItem "Envelope, $6.70"
+    cboShipping.AddItem "Small Box, $7.20"
+    cboShipping.AddItem "Med. Box, $13.65"
+    cboShipping.AddItem "Large Box, $18.90"
     
 End If
 cboShipping.ListIndex = 0     'picks the first item in the box
