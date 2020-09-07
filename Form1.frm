@@ -2,11 +2,11 @@ VERSION 5.00
 Begin VB.Form Form1 
    BackColor       =   &H00404040&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "eBay Calculator App 1.5 (1/21/2018 Rates)"
-   ClientHeight    =   3480
+   Caption         =   "eBay Calculator App 1.6 (1/26/2020 Rates)"
+   ClientHeight    =   3765
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   13050
+   ClientWidth     =   12585
    BeginProperty Font 
       Name            =   "Calibri"
       Size            =   12
@@ -19,17 +19,26 @@ Begin VB.Form Form1
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   3480
-   ScaleWidth      =   13050
+   ScaleHeight     =   3765
+   ScaleWidth      =   12585
    StartUpPosition =   3  'Windows Default
    Begin VB.Frame frmItmCst 
       BackColor       =   &H0080FF80&
       Caption         =   "Less Item Cost"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1335
-      Left            =   5880
-      TabIndex        =   27
-      Top             =   1440
-      Width           =   1935
+      Left            =   5640
+      TabIndex        =   24
+      Top             =   1320
+      Width           =   1695
       Begin VB.Label lblPercent1 
          Alignment       =   2  'Center
          BackColor       =   &H0080FF80&
@@ -46,9 +55,9 @@ Begin VB.Form Form1
          ForeColor       =   &H00808000&
          Height          =   255
          Left            =   120
-         TabIndex        =   29
+         TabIndex        =   26
          Top             =   960
-         Width           =   1695
+         Width           =   1455
       End
       Begin VB.Label lblLessCost 
          Alignment       =   2  'Center
@@ -56,7 +65,7 @@ Begin VB.Form Form1
          Caption         =   "lblLessCost"
          BeginProperty Font 
             Name            =   "Calibri"
-            Size            =   15.75
+            Size            =   18
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -64,21 +73,30 @@ Begin VB.Form Form1
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00404040&
-         Height          =   375
-         Left            =   240
-         TabIndex        =   28
-         Top             =   480
+         Height          =   495
+         Left            =   120
+         TabIndex        =   25
+         Top             =   360
          Width           =   1455
       End
    End
    Begin VB.Frame frmKillShipping 
       BackColor       =   &H0080FF80&
       Caption         =   "Profit - Less Fees n Shipping"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1335
-      Left            =   2760
-      TabIndex        =   24
-      Top             =   1440
-      Width           =   3015
+      Left            =   2640
+      TabIndex        =   21
+      Top             =   1320
+      Width           =   2895
       Begin VB.Label lblShip 
          Alignment       =   1  'Right Justify
          BackColor       =   &H0080FF80&
@@ -94,8 +112,8 @@ Begin VB.Form Form1
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   255
-         Left            =   1440
-         TabIndex        =   26
+         Left            =   1200
+         TabIndex        =   23
          Top             =   960
          Width           =   1335
       End
@@ -105,7 +123,7 @@ Begin VB.Form Form1
          Caption         =   "lblProfit"
          BeginProperty Font 
             Name            =   "Calibri"
-            Size            =   20.25
+            Size            =   24
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -113,9 +131,9 @@ Begin VB.Form Form1
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00008000&
-         Height          =   495
+         Height          =   615
          Left            =   120
-         TabIndex        =   25
+         TabIndex        =   22
          Top             =   360
          Width           =   2535
       End
@@ -123,11 +141,20 @@ Begin VB.Form Form1
    Begin VB.Frame frmAfter 
       BackColor       =   &H0080FF80&
       Caption         =   "After eBay/PayPal Fees"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1335
       Left            =   120
-      TabIndex        =   21
-      Top             =   1440
-      Width           =   2535
+      TabIndex        =   18
+      Top             =   1320
+      Width           =   2415
       Begin VB.Label lblPPeBayFees 
          Alignment       =   1  'Right Justify
          BackColor       =   &H0080FF80&
@@ -143,10 +170,10 @@ Begin VB.Form Form1
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   255
-         Left            =   960
-         TabIndex        =   23
+         Left            =   480
+         TabIndex        =   20
          Top             =   960
-         Width           =   1455
+         Width           =   1575
       End
       Begin VB.Label lblAfterFees 
          Alignment       =   2  'Center
@@ -154,7 +181,7 @@ Begin VB.Form Form1
          Caption         =   "lblAfterFees"
          BeginProperty Font 
             Name            =   "Calibri"
-            Size            =   14.25
+            Size            =   18
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -164,27 +191,36 @@ Begin VB.Form Form1
          ForeColor       =   &H00008000&
          Height          =   495
          Left            =   240
-         TabIndex        =   22
-         Top             =   480
-         Width           =   2055
+         TabIndex        =   19
+         Top             =   360
+         Width           =   1815
       End
    End
    Begin VB.CommandButton btnTotal 
       Caption         =   "Get Totals"
-      Height          =   495
-      Left            =   7920
-      TabIndex        =   20
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   735
+      Left            =   4680
+      TabIndex        =   17
       Top             =   2880
-      Width           =   2535
+      Width           =   2655
    End
    Begin VB.Frame frmShipChrgd 
       BackColor       =   &H0080FF80&
       Caption         =   "Shipping Charged"
       Height          =   1095
-      Left            =   5760
-      TabIndex        =   16
+      Left            =   4800
+      TabIndex        =   13
       Top             =   120
-      Width           =   2055
+      Width           =   2535
       Begin VB.TextBox txtShipCharged 
          Height          =   405
          Left            =   120
@@ -192,17 +228,17 @@ Begin VB.Form Form1
          Text            =   "txtShipCharged"
          ToolTipText     =   "Shipping you are charging"
          Top             =   480
-         Width           =   1815
+         Width           =   2055
       End
    End
    Begin VB.Frame frmSold 
       BackColor       =   &H0080FF80&
       Caption         =   "Will Sell/Sold Price"
       Height          =   1095
-      Left            =   3480
-      TabIndex        =   15
+      Left            =   2280
+      TabIndex        =   12
       Top             =   120
-      Width           =   2175
+      Width           =   2415
       Begin VB.TextBox txtSell 
          Height          =   405
          Left            =   240
@@ -210,17 +246,17 @@ Begin VB.Form Form1
          Text            =   "txtSell"
          ToolTipText     =   "Buy it Now or Auction Sold Price"
          Top             =   480
-         Width           =   1815
+         Width           =   1935
       End
    End
    Begin VB.Frame frmItem 
       BackColor       =   &H0080FF80&
       Caption         =   "Item Cost"
       Height          =   1095
-      Left            =   1920
-      TabIndex        =   14
+      Left            =   120
+      TabIndex        =   11
       Top             =   120
-      Width           =   1455
+      Width           =   2055
       Begin VB.TextBox txtCost 
          Height          =   390
          Left            =   120
@@ -228,51 +264,24 @@ Begin VB.Form Form1
          Text            =   "txtCost"
          ToolTipText     =   "Original cost you spent to purchase the item"
          Top             =   480
-         Width           =   1215
-      End
-   End
-   Begin VB.Frame frmListing 
-      BackColor       =   &H00FFC0C0&
-      Caption         =   "Listing Format"
-      Height          =   1095
-      Left            =   120
-      TabIndex        =   11
-      Top             =   120
-      Width           =   1695
-      Begin VB.OptionButton optFixed 
-         BackColor       =   &H00FFC0C0&
-         Caption         =   "Fixed Price"
-         Height          =   285
-         Left            =   120
-         TabIndex        =   13
-         Top             =   720
          Width           =   1455
-      End
-      Begin VB.OptionButton optAuction 
-         BackColor       =   &H00FFC0C0&
-         Caption         =   "Auction"
-         Height          =   285
-         Left            =   120
-         TabIndex        =   12
-         Top             =   360
-         Width           =   1215
       End
    End
    Begin VB.Frame frmDiscounts 
       BackColor       =   &H00C0C0FF&
       Caption         =   "Discounts"
-      Height          =   1935
-      Left            =   10560
+      Height          =   2055
+      Left            =   10080
       TabIndex        =   9
       ToolTipText     =   "Power Seller and Store type Discounts"
-      Top             =   1440
+      Top             =   1560
       Width           =   2415
       Begin VB.CheckBox chkStore 
          BackColor       =   &H00C0C0FF&
          Caption         =   "Has Store?"
          Height          =   285
          Left            =   120
-         TabIndex        =   32
+         TabIndex        =   29
          ToolTipText     =   "Check for Basic, Premium, and Anchor Store "
          Top             =   840
          Width           =   1575
@@ -281,7 +290,7 @@ Begin VB.Form Form1
          Height          =   405
          Left            =   120
          Style           =   2  'Dropdown List
-         TabIndex        =   31
+         TabIndex        =   28
          ToolTipText     =   "Select Final Value Fee"
          Top             =   1320
          Width           =   1455
@@ -312,7 +321,7 @@ Begin VB.Form Form1
          ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   1440
-         TabIndex        =   19
+         TabIndex        =   16
          Top             =   1440
          Width           =   855
       End
@@ -320,18 +329,88 @@ Begin VB.Form Form1
    Begin VB.Frame frmShipping 
       BackColor       =   &H00C0C0FF&
       Caption         =   "Actual Shipping Costs"
-      Height          =   2655
-      Left            =   7920
+      Height          =   3495
+      Left            =   7440
       TabIndex        =   7
       Top             =   120
       Width           =   2535
+      Begin VB.OptionButton optZ8 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "8"
+         Height          =   495
+         Left            =   1560
+         TabIndex        =   36
+         ToolTipText     =   "Zone 8 & 9"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ7 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "7"
+         Height          =   495
+         Left            =   1320
+         TabIndex        =   35
+         ToolTipText     =   "Zone 7"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ6 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "6"
+         Height          =   495
+         Left            =   1080
+         TabIndex        =   34
+         ToolTipText     =   "Zone 6"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ5 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "5"
+         Height          =   495
+         Left            =   840
+         TabIndex        =   33
+         ToolTipText     =   "Zone 5"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ4 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "4"
+         Height          =   495
+         Left            =   600
+         TabIndex        =   32
+         ToolTipText     =   "Zone 4"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ3 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "3"
+         Height          =   495
+         Left            =   360
+         TabIndex        =   31
+         ToolTipText     =   "Zone 3"
+         Top             =   1800
+         Width           =   255
+      End
+      Begin VB.OptionButton optZ1 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "1"
+         Height          =   495
+         Left            =   120
+         TabIndex        =   30
+         ToolTipText     =   "Zone 1 & 2"
+         Top             =   1800
+         Width           =   255
+      End
       Begin VB.TextBox txtShipping 
          Height          =   405
-         Left            =   360
+         Left            =   120
          TabIndex        =   4
          Text            =   "txtShipping"
          ToolTipText     =   "Actual Shipping Cost"
-         Top             =   2040
+         Top             =   3000
          Width           =   1815
       End
       Begin VB.CheckBox chkUSPSDiscount 
@@ -341,7 +420,7 @@ Begin VB.Form Form1
          Left            =   360
          TabIndex        =   8
          ToolTipText     =   "USPS Discount Prices"
-         Top             =   480
+         Top             =   360
          Value           =   1  'Checked
          Width           =   1815
       End
@@ -351,19 +430,27 @@ Begin VB.Form Form1
          Style           =   2  'Dropdown List
          TabIndex        =   3
          ToolTipText     =   "Select USPS Shipping Cost"
-         Top             =   960
+         Top             =   840
          Width           =   2175
       End
       Begin VB.Label lblOR 
-         Alignment       =   2  'Center
          BackColor       =   &H00C0C0FF&
          Caption         =   "OR Enter Shipping"
          ForeColor       =   &H00C00000&
          Height          =   375
-         Left            =   240
-         TabIndex        =   17
+         Left            =   120
+         TabIndex        =   14
+         Top             =   2640
+         Width           =   2175
+      End
+      Begin VB.Label lblZone 
+         BackColor       =   &H00C0C0FF&
+         Caption         =   "Select Zone Below"
+         Height          =   375
+         Left            =   120
+         TabIndex        =   37
          Top             =   1560
-         Width           =   1935
+         Width           =   1815
       End
    End
    Begin VB.Frame frmPP 
@@ -378,8 +465,8 @@ Begin VB.Form Form1
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1215
-      Left            =   10560
+      Height          =   1335
+      Left            =   10080
       TabIndex        =   5
       Top             =   120
       Width           =   2415
@@ -410,7 +497,7 @@ Begin VB.Form Form1
          ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   1440
-         TabIndex        =   18
+         TabIndex        =   15
          Top             =   840
          Width           =   855
       End
@@ -433,7 +520,7 @@ Begin VB.Form Form1
       ForeColor       =   &H00000080&
       Height          =   255
       Left            =   240
-      TabIndex        =   30
+      TabIndex        =   27
       ToolTipText     =   "Click to open system calculator"
       Top             =   3000
       Width           =   1935
@@ -446,8 +533,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 '---------------------------------------------------------------------------------------
 ' Program   : eBayCalculator.exe
-' Date      : 1/21/2018
-'
+' Date      : 9/07/2020
 '
 ' Updated 5/31/2015 for new USPS postal rates
 ' Updated 1/17/2016 for new USPS postal rates
@@ -455,24 +541,22 @@ Attribute VB_Exposed = False
 ' Updates 4/24/2017 for new USPS postal rates
 ' Updates 5/01/2017 for new eBay Fees, also added Flat Rate USPS prices
 ' Updates 1/21/2018 for new USPS postal rates
+' Updates 9/07/2020 for new USPS postal rates and remove Listing Format tile
 '
 ' TODO:  Use program name to set options, for example:
 '        eBayCalculatorSP.exe could be Basic Store, Power Seller
 '        eBayCalculatorN22.exe could be No Store, 2.2% PayPal transaction fee
 '
-' Listing Format        Discounts            PayPal Transaction Fee  Final Value Fees
-'  A -- Auction         *P -- Power Seller   *29 -- 2.9% + $0.30     4 -- 4% FV Fee
-' *F -- Fixed Price      N -- No Store        25 -- 2.5% + $0.30     6 -- 6.15% FV Fee
-'                       *S -- Store           22 -- 2.2% + $0.30     7 -- 7.15% FV Fee
-' USPS Discount                               19 -- 1.9% + $0.30     8 -- 8.15% FV Fee
-' *U -- USPS Discount                         50 -- 5.0% + $0.05    *9 -- 9.15% FV Fee
-'  X -- No Discount                                                 10 - 10% FV Fee (No Store ONLY)
+' USPS Discount         Discounts            PayPal Transaction Fee  Final Value Fees
+' *U -- USPS Discount  *P -- Power Seller   *29 -- 2.9% + $0.30     1.5  -- 1.5%  FV Fee
+'  X -- No Discount     N -- No Store        25 -- 2.5% + $0.30     3.5  -- 3.5%  FV Fee
+'                      *S -- Store           22 -- 2.2% + $0.30     4.0  -- 4.0%  FV Fee
+'                                            19 -- 1.9% + $0.30     6.15 -- 6.15% FV Fee
+'                                            50 -- 5.0% + $0.05    *8.15 -- 8.15% FV Fee
+' * - denotes default                                               9.15 -- 9.15% FV Fee
+'                                                                   10 - 10% FV Fee (No Store ONLY)
 '
-' * - denotes default
-'
-'
-' FIX: $ - dollar signs disappear on all money calculations, bug
-'      Copy/Paste Text into Number Fields, bug
+' FIX: Copy/Paste Text into Number Fields, bug
 '      Dollar decimals short/long, bug
 '
 '---------------------------------------------------------------------------------------
@@ -501,7 +585,7 @@ Call Shipping
 End Sub
 
 Private Sub Form_Load()
-Me.Height = 3900    'sets the form height
+Me.Height = 4230    'sets the form height
 Call PayPalFees     'load PayPal Fees Combobox
 Call Shipping       'load Shipping Combobox
 Call FinalValueFees 'load Final Value Fees percentage Combobox
@@ -514,7 +598,6 @@ Unload Form1        'graceful exit
 End Sub
 
 Private Sub SetDefaults()
-optFixed.Value = True          'set Fixed price radio button
 chkStore.Value = 1             'store is checked
 chkPS.Value = 1                'PowerSeller is checked
 txtCost.Text = "0.00"          'sets the cost value
@@ -528,6 +611,9 @@ lblProfit.Caption = "$$$"          'sets profit label
 lblShip.Caption = "$0.00"           'sets shipping lbl
 lblLessCost.Caption = "-"           'sets less cost lbl
 lblPercent1.Caption = "Profit / Item Cost"
+optZ1 = True                    'sets shipping Zone 1
+chkUSPSDiscount = 1             'sets USPS discount box
+
 End Sub
 
 Private Sub PayPalFees()    'load PayPal Fees Combobox
@@ -540,12 +626,13 @@ cboPPFees.ListIndex = 0     'picks the first item in the box
 End Sub
 
 Private Sub FinalValueFees()  'load Final Value Fees Combobox
+cboFVF.AddItem "1.50% FVF"
+cboFVF.AddItem "3.50% FVF"
 cboFVF.AddItem "4.00% FVF"
 cboFVF.AddItem "6.15% FVF"
-cboFVF.AddItem "7.15% FVF"
 cboFVF.AddItem "8.15% FVF"
 cboFVF.AddItem "9.15% FVF"
-cboFVF.ListIndex = 4   'picks the last item in the box
+cboFVF.ListIndex = 5   'picks the last item in the box
 End Sub
 
 Private Sub EbayPayPalTransFees()
@@ -587,6 +674,16 @@ lblProfit.Caption = Val(lblAfterFees.Caption) - Val(lblShip.Caption)
 lblLessCost.Caption = Round(Val(lblProfit.Caption) - Val(txtCost.Text), 2)
 Call PercentCalc
 
+'Add $$$ here
+lblAfterFees = "$" & lblAfterFees.Caption
+lblProfit = "$" & lblProfit.Caption
+lblLessCost = "$" & lblLessCost.Caption
+lblPPeBayFees = "-$" & lblPPeBayFees.Caption
+lblShip = "-$" & lblShip.Caption
+lblPPFees = "-$" & lblPPFees.Caption
+lblEbayFees = "-$" & lblEbayFees.Caption
+
+
 theEnd:     'basic error handler
 End Sub
 
@@ -610,6 +707,7 @@ Private Sub PercentCalc()
 On Error GoTo theEnd
 If Val(txtCost.Text) > 0 Then
 lblPercent1.Caption = Round(Val(lblProfit.Caption) / Val(txtCost.Text), 3)
+lblPercent1 = lblPercent1.Caption & " times"
 Else
 lblPercent1.Caption = "Profit / Item Cost"
 End If
@@ -637,56 +735,134 @@ End Sub
 
 Private Sub Shipping()
 txtShipping.Text = "0.00"           'resets the shipping box
-If chkUSPSDiscount.Value = vbChecked Then   'its the cheaper postage
+If chkUSPSDiscount.Value = vbChecked And optZ1 = True Then   'its the cheaper postage
     cboShipping.Clear
-    cboShipping.AddItem "1 oz, $2.66"
-    cboShipping.AddItem "2 oz, $2.66"
-    cboShipping.AddItem "3 oz, $2.66"
-    cboShipping.AddItem "4 oz, $2.66"
-    cboShipping.AddItem "5 oz, $2.79"
-    cboShipping.AddItem "6 oz, $2.92"
-    cboShipping.AddItem "7 oz, $3.05"
-    cboShipping.AddItem "8 oz, $3.18"
-    cboShipping.AddItem "9 oz, $3.34"
-    cboShipping.AddItem "10 oz, $3.50"
-    cboShipping.AddItem "11 oz, $3.66"
-    cboShipping.AddItem "12 oz, $3.82"
-    cboShipping.AddItem "13 oz, $4.10"
-    cboShipping.AddItem "14 oz, $4.38"
-    cboShipping.AddItem "15 oz, $4.66"
-    cboShipping.AddItem "16 oz, $4.94"
-    cboShipping.AddItem "Envelope, $6.85"
-    cboShipping.AddItem "Small Box, $7.05"
-    cboShipping.AddItem "Med. Box, $12.85"
-    cboShipping.AddItem "Large Box, $17.65"
-Else
-    cboShipping.Clear       'its the expensive shipping
-    cboShipping.AddItem "1 oz, $3.54"
-    cboShipping.AddItem "2 oz, $3.54"
-    cboShipping.AddItem "3 oz, $3.54"
-    cboShipping.AddItem "4 oz, $3.54"
-    cboShipping.AddItem "5 oz, $3.72"
-    cboShipping.AddItem "6 oz, $3.90"
-    cboShipping.AddItem "7 oz, $4.08"
-    cboShipping.AddItem "8 oz, $4.26"
-    cboShipping.AddItem "9 oz, $4.44"
-    cboShipping.AddItem "10 oz, $4.62"
-    cboShipping.AddItem "11 oz, $4.80"
-    cboShipping.AddItem "12 oz, $4.98"
-    cboShipping.AddItem "13 oz, $5.16"
-    cboShipping.AddItem "Envelope, $6.70"
-    cboShipping.AddItem "Small Box, $7.20"
-    cboShipping.AddItem "Med. Box, $13.65"
-    cboShipping.AddItem "Large Box, $18.90"
-    
+    cboShipping.AddItem "1 - 4 oz, $2.74"
+    cboShipping.AddItem "5 - 8 oz, $3.21"
+    cboShipping.AddItem "9 - 12 oz, $3.93"
+    cboShipping.AddItem "13 - 16 oz, $5.04"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ3 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $2.76"
+    cboShipping.AddItem "5 - 8 oz, $3.23"
+    cboShipping.AddItem "9 - 12 oz, $3.97"
+    cboShipping.AddItem "13 - 16 oz, $5.08"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ4 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $2.78"
+    cboShipping.AddItem "5 - 8 oz, $3.25"
+    cboShipping.AddItem "9 - 12 oz, $4.00"
+    cboShipping.AddItem "13 - 16 oz, $5.12"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ5 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $2.84"
+    cboShipping.AddItem "5 - 8 oz, $3.31"
+    cboShipping.AddItem "9 - 12 oz, $4.08"
+    cboShipping.AddItem "13 - 16 oz, $5.27"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ6 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $2.93"
+    cboShipping.AddItem "5 - 8 oz, $3.39"
+    cboShipping.AddItem "9 - 12 oz, $4.18"
+    cboShipping.AddItem "13 - 16 oz, $5.40"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ7 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.05"
+    cboShipping.AddItem "5 - 8 oz, $3.52"
+    cboShipping.AddItem "9 - 12 oz, $4.32"
+    cboShipping.AddItem "13 - 16 oz, $5.54"
+ElseIf chkUSPSDiscount.Value = vbChecked And optZ8 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.18"
+    cboShipping.AddItem "5 - 8 oz, $3.67"
+    cboShipping.AddItem "9 - 12 oz, $4.46"
+    cboShipping.AddItem "13 - 16 oz, $5.70"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ1 = True Then 'more expensive shipping
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.80"
+    cboShipping.AddItem "5 - 8 oz, $4.60"
+    cboShipping.AddItem "9 - 12 oz, $5.30"
+    cboShipping.AddItem "13 oz, $5.90"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ3 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.85"
+    cboShipping.AddItem "5 - 8 oz, $4.65"
+    cboShipping.AddItem "9 - 12 oz, $5.35"
+    cboShipping.AddItem "13 oz, $5.95"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ4 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.90"
+    cboShipping.AddItem "5 - 8 oz, $4.70"
+    cboShipping.AddItem "9 - 12 oz, $5.40"
+    cboShipping.AddItem "13 oz, $6.05"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ5 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $3.95"
+    cboShipping.AddItem "5 - 8 oz, $4.75"
+    cboShipping.AddItem "9 - 12 oz, $5.45"
+    cboShipping.AddItem "13 oz, $6.15"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ6 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $4.00"
+    cboShipping.AddItem "5 - 8 oz, $4.80"
+    cboShipping.AddItem "9 - 12 oz, $5.50"
+    cboShipping.AddItem "13 oz, $6.20"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ7 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $4.05"
+    cboShipping.AddItem "5 - 8 oz, $4.90"
+    cboShipping.AddItem "9 - 12 oz, $5.65"
+    cboShipping.AddItem "13 oz, $6.40"
+ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ8 = True Then
+    cboShipping.Clear
+    cboShipping.AddItem "1 - 4 oz, $4.20"
+    cboShipping.AddItem "5 - 8 oz, $5.00"
+    cboShipping.AddItem "9 - 12 oz, $5.75"
+    cboShipping.AddItem "13 oz, $6.50"
 End If
-cboShipping.ListIndex = 0     'picks the first item in the box
+    cboShipping.AddItem "Envelope, $7.15"
+    cboShipping.AddItem "Small Box, $7.65"
+    cboShipping.AddItem "Med. Box, $13.25"
+    cboShipping.AddItem "Large Box, $18.30"
+    cboShipping.ListIndex = 0     'picks the first item in the box
 
 End Sub
 
 Private Sub lblCalculator_Click()
 On Error Resume Next        'if it doesn't open, just continue
 Shell "calc", vbNormalFocus
+End Sub
+
+Private Sub optZ1_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ3_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ4_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ5_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ6_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ7_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ8_Click()
+Call Shipping
+End Sub
+
+Private Sub optZ9_Click()
+Call Shipping
 End Sub
 
 Private Sub txtCost_DblClick()
