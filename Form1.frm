@@ -820,10 +820,17 @@ ElseIf chkUSPSDiscount.Value = vbUnchecked And optZ8 = True Then
     cboShipping.AddItem "9 - 12 oz, $5.75"
     cboShipping.AddItem "13 oz, $6.50"
 End If
-    cboShipping.AddItem "Envelope, $7.15"
-    cboShipping.AddItem "Small Box, $7.65"
-    cboShipping.AddItem "Med. Box, $13.25"
-    cboShipping.AddItem "Large Box, $18.30"
+    If chkUSPSDiscount.Value = vbChecked Then         'adds the flat rate options, cheaper
+        cboShipping.AddItem "Envelope, $7.15"
+        cboShipping.AddItem "Small Box, $7.65"
+        cboShipping.AddItem "Med. Box, $13.25"
+        cboShipping.AddItem "Large Box, $18.30"
+    ElseIf chkUSPSDiscount.Value = vbUnchecked Then   'adds Retail flat rate, expensive
+        cboShipping.AddItem "Envelope, $7.75"
+        cboShipping.AddItem "Small Box, $8.30"
+        cboShipping.AddItem "Med. Box, $15.05"
+        cboShipping.AddItem "Large Box, $21.10"
+    End If
     cboShipping.ListIndex = 0     'picks the first item in the box
 
 End Sub
